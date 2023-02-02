@@ -1,5 +1,10 @@
+from django.shortcuts import render
+from django.contrib.auth.decorators import login_required
+
+# Create your views here.
 from django.shortcuts import render,redirect
 from django.contrib.auth.models import User
+from django.contrib.auth.forms import UserCreationForm  
 from .models import Profile
 from .forms import LoginForm
 from django.contrib.auth import authenticate,login
@@ -17,9 +22,23 @@ def doctors_detail(request,slug):
     return render(request,"user/doctors_detail.html",{
         'doctors_detail':doctors_detail,
     })
-
+def Signup(request):
+    if request.method=='POST':
+        form =UserCreationForm(request.POST)
+        if form.is_valid():
+            form.save()
+            username=form.cleaned_data.get('username')
+            password=form.cleaned_data.get('password')
+            user= authenticate(username=username,password=password)
+            login(request,user)
+            return redirect('accounts:doctors_list')
+    else:
+        form =UserCreationForm()
+    return render(request,"user/signup.html",{
+        'form':form
+    })
 def user_login(request):
-    if request.methd=='POST':
+    if request.method=='POST':
         form=LoginForm()
         username=request.POST['username']
         password=request.POST['password']
@@ -32,4 +51,9 @@ def user_login(request):
 
     return render(request,"user/login.html",{
         'form':form
+    })
+@login_required()
+def myprofile(request):
+    return render(request,"user/myprofile.html",{
+        
     })

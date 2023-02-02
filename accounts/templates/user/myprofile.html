@@ -17,21 +17,21 @@
                 <div class="single_jobs white-bg d-flex justify-content-between">
                     <div class="jobs_left d-flex align-items-center">
                         <div >
-                            {% if doctors_detail.image %}
-                                <img class="img-circle" src="{{doctors_detail.image.url}}" alt="" width="100" height="100">
+                            {% if user.profile.image %}
+                                <img class="img-circle" src="{{user.profile.image.url}}" alt="" width="100" height="100">
                                 {% else %}
                                 <img  src="{% static 'img/candiateds/1.png' %}" alt="" width="100" height="100">
 
                                 {% endif %}
                         </div>
                         <div class="jobs_conetent">
-                            <a href="" ><h4>دكتور{{doctors_detail.name}}</h4></a>
+                            <a href="#" ><h4>دكتور {{user.profile.name}}</h4></a>
                             <div class="links_locat d-flex align-items-center">
                                 <div class="location">
-                                    <p> <i class="fa fa-map-marker"></i> مصر  ,{{doctors_detail.adress}} </p>
+                                    <p> <i class="fa fa-map-marker"></i> مصر  ,{{user.profile.adress}} </p>
                                 </div>
                                 <div class="location">
-                                    <p> <i class="fa fa-clock-o"></i>  وقت الانتظار   {{doctors_detail.wating_time}}</p>
+                                    <p> <i class="fa fa-clock-o"></i>  وقت الانتظار   {{user.profile.wating_time}}</p>
                                 </div>
                             </div>
                         </div>
@@ -47,13 +47,13 @@
             <div class="descript_wrap white-bg">
                 <div class="single_wrapp">
                     <h3>نبذه عن الدكتور</h3>
-                    <p>{{doctors_detail.subtitle}}</p>
+                    <p>{{user.profile.subtitle}}</p>
                 </div>
                 <div class="white-card white-card-inner">
                     <div class="single_wrap" style="margin-top: 10px;">
                         <h4>معلومات عن الدكتور</h4>
                         <ul>
-                            <p> {{doctors_detail.who_i}}</p>
+                            <p> {{user.profile.who_i}}</p>
                         </ul>
                     </div>
                 </div>
@@ -163,10 +163,10 @@
                 </div>
                 <div class="job_content">
                     <ul>
-                        <li>  انضم إلينا : <span style="color: blue;"></span></li>
-                        <li> الكشف :<span style="color: blue;">  {{doctors_detail.price}} جنية</span></li>
-                        <li> رقم الهاتف  :<span style="color: blue;"> {{doctors_detail.number_phone}}</span></li>
-                        <li>عدد ساعات العمل :  <span style="color: blue;">  {{doctors_detail.working_hours}} ساعات</span></li>
+                        <li>  انضم إلينا : <span style="color: blue;">{{user.profile.join_new |date:'d - m - Y'}}</span></li>
+                        <li> الكشف :<span style="color: blue;">  {{user.profile.price}} جنية</span></li>
+                        <li> رقم الهاتف  :<span style="color: blue;"> {{user.profile.number_phone}}</span></li>
+                        <li>عدد ساعات العمل :  <span style="color: blue;">  {{user.profile.working_hours}} ساعات</span></li>
                     </ul>
                     
                 </div>
@@ -174,9 +174,9 @@
             <div class="share_wrap d-flex">
                 <span>شارك الصفحه :</span>
                 <ul>
-                    <li><a href="{{doctors_detail.facebook}}"> <i class="fa fa-facebook"></i></a> </li>
-                    <li><a href="{{doctors_detail.google}}"> <i class="fa fa-google-plus"></i></a> </li>
-                    <li><a href="{{doctors_detail.twiter}}"> <i class="fa fa-twitter"></i></a> </li>
+                    <li><a href="{{user.profile.facebook}}"> <i class="fa fa-facebook"></i></a> </li>
+                    <li><a href="{{user.profile.google}}"> <i class="fa fa-google-plus"></i></a> </li>
+                    <li><a href="{{user.profile.twiter}}"> <i class="fa fa-twitter"></i></a> </li>
                 </ul>
             </div>
             <div class="job_location_wrap">
