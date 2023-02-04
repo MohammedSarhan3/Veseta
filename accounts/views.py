@@ -60,3 +60,22 @@ def myprofile(request):
     return render(request,"user/myprofile.html",{
         
     })
+
+def update_profile(request):
+    user_form=Update_User_Form(instance=request.user)
+    profile_form=Update_Profile_Form(instance=request.user.profile)
+    
+    if request.method=='POST':
+        user_form=Update_User_Form(request.POST,instance=request.user)
+        profile_form=Update_Profile_Form(request.POST,request.FILES,instance=request.user.profile)
+
+        if user_form.is_valid and profile_form.is_valid:
+            user_form.save()
+            profile_form.save()
+            return redirect('accounts:myprofile')
+
+       
+
+    return render(request,"user/updatee_profile.html",{
+        'user_form':user_form,'profile_form':profile_form
+    })
