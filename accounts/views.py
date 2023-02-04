@@ -15,3 +15,10 @@ def doctors_list(request):
         'doctors':doctors,
     })
 
+
+def doctors_detail(request,slug):
+    doctors_detail =Profile.objects.get(slug=slug)
+    return render(request,"user/doctors_detail.html",{
+        'doctors_detail':doctors_detail,
+    })
+
