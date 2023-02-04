@@ -1,0 +1,107 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% load crispy_forms_tags %}
+
+
+{% block body %}
+
+<div dir="rtl">
+    <div class="container">
+        <div class="signup">
+    
+        <div class="col-md-9" >
+            <form method="POST" enctype="multipart/form-data">
+                <h4 class="auth-header">تحديث معلوماتك الشخصية</h4>
+                {% csrf_token %}
+                    <div class="form-group">
+                        
+                            {{ user_form.email|as_crispy_field }}
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                {{ user_form.first_name|as_crispy_field }}
+
+                        </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                {{ user_form.last_name|as_crispy_field }}
+
+                        </div>
+                    </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                
+                                {{ profile_form.name|as_crispy_field }}
+
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                {{ profile_form.subtitle|as_crispy_field }}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        {{ profile_form.adress|as_crispy_field }}
+                    </div>
+                    <div class="form-group">
+                        {{ profile_form.adress_detail|as_crispy_field }}
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                {{ profile_form.number_phone|as_crispy_field }}
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                {{ profile_form.working_hours|as_crispy_field }}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                {{ profile_form.wating_time|as_crispy_field }}
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                {{ profile_form.spcalist_doctor|as_crispy_field }}
+                        </div>
+                        </div>
+                    </div>
+                  
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                {{ profile_form.who_i|as_crispy_field }}
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                {{ profile_form.doctor|as_crispy_field }}
+                        </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                {{ profile_form.price|as_crispy_field }}
+                            </div>
+                        </div>
+                     
+                <div class="buttons-w col-sm-12"><button type="submit" class="btn btn-success">تعديل</button></div>
+                
+            </form>
+        </div>
+        </div>
+    </div>
+    </div>
+
+{% endblock body %}
