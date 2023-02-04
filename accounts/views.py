@@ -55,3 +55,8 @@ def user_login(request):
         'form':form
     })
     
+@login_required()
+def myprofile(request):
+    return render(request,"user/myprofile.html",{
+        
+    })
